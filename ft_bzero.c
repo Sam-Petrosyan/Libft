@@ -1,31 +1,27 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/25 16:13:04 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/03/25 16:18:47 by spetrosy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *str, size_t n)
 {
-	char *s;
-	int i;
+	char	*s;
+	size_t	i;
 
 	s = str;
 	i = 0;
-	while (s[i])
+	while (i < n)
 	{
-		while (n > 0)
-		{
-			s[i] = '\0';
-			n--;
-		}
+		s[i] = '\0';
 		i++;
 	}	
-}
-
-int main()
-{
-	char str[10] = "1234567890";
-	
-	printf("str old: %s\n", str);
-	ft_bzero(str + 5, 4);
-	printf("str new: %s.\n", str);
-
-	return (0);
 }

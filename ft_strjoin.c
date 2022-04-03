@@ -1,35 +1,38 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/30 13:33:14 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/03/30 13:46:43 by spetrosy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strjoin(char const *s1, char const *s2)
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;
-	int j;
-	char *src = (char *) malloc(sizeof(src));
+	int		i;
+	int		j;
+	char	*str;
+
+	str = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
 	i = 0;
-	j = 0;
-	if (src)
+	while (s1[i])
 	{
-		while (s1[i])
-		{
-			src[i] = s1[i];
-			i++;
-		}
-		while (s2[j])
-		{
-			src[i + j] = s2[j];
-			j++;
-		}
-		return (src);
+		str[i] = s1[i];
+		i++;
 	}
-	return (NULL);
-}
-
-int main(void)
-{
-	char dest[] = "Hello world.";
-	char string[] = "How are you?";
-	char *idest = ft_strjoin(dest, string);
-	printf("%s\n", idest);
-	return (0);
+	j = 0;
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }

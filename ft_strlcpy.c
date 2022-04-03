@@ -1,13 +1,31 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/25 15:28:25 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/03/25 16:25:14 by spetrosy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	unsigned int i;
-	int j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	while (dest[i] && i < n)
+	if (n == 0)
+	{
+		while (src[i])
+			i++;
+		return (i);
+	}
+	while (src[i] && i < n - 1)
 	{
 		dest[i] = src[i];
 		i++;
@@ -16,15 +34,4 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	while (src[j])
 		j++;
 	return (j);
-}
-
-int main(void)
-{
-	char dest[] = "Hello world";
-	char src[] = "Barev brats";
-
-	printf("old dest: %s\n", dest);
-	int i = ft_strlcpy(dest, src, 6);
-	printf("new dest: %s\n", dest);
-	printf("%d\n", i); 
 }

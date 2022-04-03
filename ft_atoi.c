@@ -1,41 +1,39 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/28 12:46:03 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/03/28 14:26:14 by spetrosy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int nb;
-	int a;
-	
+	int	i;
+	int	a;
+	int	nb;
+
 	a = 1;
 	i = 0;
 	nb = 0;
-	while (str[i])
+	while (str[i] <= 32)
+		i++;
+	if (str[i] == '-')
 	{
-		while (str[i] == '\n' || str[i] == '\t'
-		|| str[i] == '\f' || str[i] == '\r'
-		|| str[i] == '\v' || str[i] == ' ')
-			i++;
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i] == '-')
-				a = -1;
-			i++;
-		}
-		while  (str[i] >= 48 && str[i] <= 57)
-		{	
-			nb = nb * 10 + (int)str[i] - 48;
-			i++;
-		}
-		return (nb * a);
+		a = -1;
 		i++;
 	}
-	return (0);
-}
-
-int main(void)
-{
-	char src[] = "12345a6789a";
-	printf("%d\n" , ft_atoi(src));
-	return (0);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] && str[i] >= 48 && str[i] <= 57)
+	{
+		nb = nb * 10 + (int)str[i] - 48;
+		i++;
+	}
+	return (nb * a);
 }
