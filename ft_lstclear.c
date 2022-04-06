@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 15:58:52 by spetrosy          #+#    #+#             */
-/*   Updated: 2022/04/04 17:53:38 by spetrosy         ###   ########.fr       */
+/*   Created: 2022/04/04 18:09:44 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/04/04 19:05:28 by spetrosy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*a;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	while (*lst)
+	{
+		a = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = a;
+	}
 }

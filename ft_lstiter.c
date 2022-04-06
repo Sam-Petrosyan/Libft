@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 15:58:52 by spetrosy          #+#    #+#             */
-/*   Updated: 2022/04/04 17:53:38 by spetrosy         ###   ########.fr       */
+/*   Created: 2022/04/04 19:34:53 by spetrosy          #+#    #+#             */
+/*   Updated: 2022/04/04 19:52:22 by spetrosy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
