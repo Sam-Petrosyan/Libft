@@ -6,7 +6,7 @@
 /*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 12:19:53 by spetrosy          #+#    #+#             */
-/*   Updated: 2022/04/04 13:58:20 by spetrosy         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:23:09 by spetrosy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void	*content)
 {
 	t_list	*new;
 
-	new = (t_list *) malloc(sizeof(new));
+	new = (t_list *) malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->content = content;

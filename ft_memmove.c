@@ -6,7 +6,7 @@
 /*   By: spetrosy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:20:27 by spetrosy          #+#    #+#             */
-/*   Updated: 2022/03/25 16:24:36 by spetrosy         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:23:00 by spetrosy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,17 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t				i;
-	const unsigned char	*s;
 	unsigned char		*d;
-	unsigned int		x;
+	unsigned const char	*s;
 
-	s = src;
 	d = dest;
-	i = 0;
-	x = 0;
-	if (s > d)
+	s = src;
+	if (d < s)
+		ft_memspy(dest, src, n);
+	else
 	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	while (n > 0)
-	{
-		d[n - 1] = s[n - 1];
-		n--;
+		while (n--)
+			*(d + n) = *(s + n);
 	}
 	return (dest);
 }
